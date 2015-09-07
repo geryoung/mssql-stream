@@ -34,7 +34,7 @@ when the row is coming, pause the stream, after comsume the row, resume the stre
 API
 ====
 ## Constructor
-```
+```javascript
 /**
  * @param {[Object]} dbConfig config for node-mssql connection   
   {
@@ -64,14 +64,16 @@ resume the stream
 ## Events
 ### 'row'
 return a row 
-```
+
+```javascript
 mssqlStream.on('row', function(row) {
   //To-Do  
 });
 ```
 ### 'error' 
 return error info
-```
+
+```javascript
 mssqlStream.on('error', function(errorInfo) {
     //To-Do
 })
@@ -79,7 +81,8 @@ mssqlStream.on('error', function(errorInfo) {
 
 ### 'end' 
 all rows has been fetched
-```
+
+```javascript
 mssqlStream.on('end', function() {
   //To-Do
 });
@@ -87,7 +90,8 @@ mssqlStream.on('end', function() {
 
 Use
 ====
-```
+
+```javascript
 var MSSQLStream = require('mssql-stream');
 
 var dbConfig = {

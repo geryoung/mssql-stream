@@ -2,7 +2,7 @@ MSSQLStream.js
 ========
 
 
-
+[![Build Status](https://travis-ci.org/geryoung/mssql-stream.svg?branch=master)](https://travis-ci.org/geryoung/mssql-stream)
 
 ## back-pressure in node-mssql
 [mssql issure Back pressure? #67](https://github.com/patriksimek/node-mssql/issues/67)
@@ -25,10 +25,6 @@ when the row is coming, pause the stream, after comsume the row, resume the stre
 3. after these 1000 rows consumed, fetch next 1000 rows
 4. until no more rows left, done.
   
-
-<!-- Install
-=======
-`npm install mssql-stream` -->
 
 
 API

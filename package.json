@@ -1,6 +1,6 @@
 {
-  "name": "mssql-stream",
-  "version": "0.0.1",
+  "name": "mssqlstream",
+  "version": "0.0.3",
   "description": "fetch all the data from mssql with pause and resume",
   "main": "index.js",
   "repository": {

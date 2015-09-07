@@ -1,0 +1,25 @@
+{
+  "name": "mssql-stream",
+  "version": "0.0.1",
+  "description": "fetch all the data from mssql with pause and resume",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./test"
+  },
+  "keywords": [
+    "mssql",
+    "pause",
+    "resume",
+    "stream",
+    "control"
+  ],
+  "author": "geryoung",
+  "license": "ISC",
+  "dependencies": {
+    "mssql": "^2.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.0",
+    "should": "^7.1.0"
+  }
+}

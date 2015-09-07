@@ -16,14 +16,12 @@ var MSSQLStream = function(dbConfig, tableConfig) {
   that.tableConfig = tableConfig;
 
   that.perFetchNum = 10;
-  //还未开始的第一个 id， 即将要开始查询的第一个 id
+  
   that.currentId = 0;
   that.total = 0;
   that.currentCount = 0;
   that.isPaused = false;
   that.uniqueColumn = 'id';
-
-  // that.connection = null;
 
   that.fetchSqlTmp = "SELECT * from {table} WHERE {uniqueColumn} >= {left} AND {uniqueColumn} <= {right};";
   that.countSqlTmp = "SELECT count(*) as total, MAX({uniqueColumn}) as maxId, MIN({uniqueColumn}) as minId FROM {table};";
@@ -57,7 +55,7 @@ MSSQLStream.prototype._init = function() {
 
 
     if( !validateTableConfig ) {
-      // console.log(validateTableConfig);
+      
       that.emit('error', 'tableConifg is wrong');
       return;
     }
@@ -65,7 +63,7 @@ MSSQLStream.prototype._init = function() {
     var countSql = that.countSqlTmp.
                       replace('{table}', that.tableConfig.name).
                       replace(/{uniqueColumn}/g, that.tableConfig.uniqueColumn);
-    // console.log(countSql);
+    
     request.query(countSql, function(err, rows) {
       if(err) {
         that.emit('error', 'query error:' + err);
@@ -95,10 +93,6 @@ MSSQLStream.prototype._init = function() {
 
   });
 
-  // connection.on('error', function(err) {
-  //   that.emit('error', 'connection error:' + err);
-  // }); 
-
 };
 
 MSSQLStream.prototype._nextRow = function() {
@@ -118,7 +112,6 @@ MSSQLStream.prototype._nextRow = function() {
     return;
   }
 
-  // console.log("rows:|" + that.rows + "|");
   that._iterator(function(err, rows) {
     if(err) {
       that.emit('error', '_ierator error:' + err + ', currentId=' + that.currentId);
@@ -126,8 +119,7 @@ MSSQLStream.prototype._nextRow = function() {
     }
 
     that.rows = rows;
-    // console.log("rows:|" + JSON.stringify(that.rows) + "|");
-    // console.log("currentId" + that.currentId);
+    
     setImmediate(function() {
       that._nextRow();
     });
@@ -138,8 +130,7 @@ MSSQLStream.prototype._nextRow = function() {
 MSSQLStream.prototype._iterator = function(callback) {
   var that = this;
   var leftId = that.currentId;
-  //结束
-  // console.log(that.range.endId);
+  
   if(leftId > that.range.endId) {
     that._end();
     return;
@@ -150,7 +141,7 @@ MSSQLStream.prototype._iterator = function(callback) {
                   replace(/{uniqueColumn}/g, that.tableConfig.uniqueColumn).
                   replace('{left}', leftId).
                   replace('{right}', rightId);
-  // console.log("fetchSql: " + fetchSql);
+  
   var connection = new mssql.Connection(that.dbConfig, function(err) {
     if(err) {
       callback(err);
@@ -169,7 +160,7 @@ MSSQLStream.prototype._iterator = function(callback) {
         callback(null, rows);
         return;
       }
-      // console.log("currentId:" +that.currentId);
+      
       that._iterator(callback);
     });
   }); 

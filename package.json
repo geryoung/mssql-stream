@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "fetch all the data from mssql with pause and resume",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geryoung/mssql-stream.git"
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test"
   },

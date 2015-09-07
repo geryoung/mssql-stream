@@ -7,7 +7,7 @@ MSSQLStream.js
 ## back-pressure in node-mssql
 [mssql issure Back pressure? #67](https://github.com/patriksimek/node-mssql/issues/67)
 
-when use [node-mssql](https://github.com/patriksimek/node-mssql) to traverse a table of MSSQL Server database, you may face the `back-pressure` problem if data is very big. `node-mssql` does not support the pause and resume in Stream now. 
+when use [node-mssql](https://github.com/patriksimek/node-mssql) to traverse a table of MSSQL Server database, you may face the `back-pressure` problem if data is very big. `node-mssql` does not support the pause and resume in stream now. 
 
 
 ## why mssql-stream
